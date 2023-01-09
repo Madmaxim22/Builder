@@ -10,23 +10,27 @@ public class Person {
     protected String city;
 
     public Person(String name, String surname) {
+        nameAndSurnameIsEmpti(name, surname);
         this.name = name;
         this.surname = surname;
     }
 
     public Person(String name, String surname, int age) {
+        nameAndSurnameIsEmpti(name, surname);
         this.name = name;
         this.surname = surname;
         this.age = age;
     }
 
     public Person(String name, String surname, String city) {
+        nameAndSurnameIsEmpti(name, surname);
         this.name = name;
         this.surname = surname;
         this.city = city;
     }
 
     public Person(String name, String surname, int age, String city) {
+        nameAndSurnameIsEmpti(name, surname);
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -72,6 +76,12 @@ public class Person {
                 .setSurname(this.surname)
                 .setAddress(this.city)
                 .setAge(this.age / 3);
+    }
+
+    private static void nameAndSurnameIsEmpti(String name, String surname) {
+        if(name == null || name.isEmpty() || surname == null || surname.isEmpty()) {
+            throw new IllegalArgumentException("Не хватает обязательных полей");
+        }
     }
 
     @Override

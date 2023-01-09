@@ -32,18 +32,14 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        if ((name != null && !name.isEmpty()) && (surname != null && !surname.isEmpty())) {
-            if (age == 0 && (city == null || city.isEmpty())) {
-                return new Person(name, surname);
-            } else if (city == null || city.isEmpty()) {
-                return new Person(name, surname, age);
-            } else if (age == 0) {
-                return new Person(name, surname, city);
-            } else {
-                return new Person(name, surname, age, city);
-            }
+        if (age == 0 && (city == null || city.isEmpty())) {
+            return new Person(name, surname);
+        } else if (city == null || city.isEmpty()) {
+            return new Person(name, surname, age);
+        } else if (age == 0) {
+            return new Person(name, surname, city);
         } else {
-            throw new IllegalArgumentException("Не хватает обязательных полей");
+            return new Person(name, surname, age, city);
         }
     }
 }
